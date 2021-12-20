@@ -1,8 +1,33 @@
 import React from "react";
 import { directors } from "../data";
+import { useState } from "react"
+
+
 
 function Directors() {
-  return <div>{/*{code here}*/}</div>;
+
+  const [director, setDirector ] = useState(directors)
+
+  return (
+  <div>
+    <h1>Directors Page</h1>
+    {director.map((director) => {
+      return (
+        <div key={director.name}>
+        <h3>Name: {director.name} </h3>
+        <p>Movies:</p>
+        <ul>
+          {director.movies.map((movie) => {
+            return (
+              <li key={movie}>{movie}</li>
+            )
+          })}
+        </ul>
+        </div>
+      )
+    })}
+  </div>
+  ) 
 }
 
 export default Directors;
